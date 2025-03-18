@@ -28,7 +28,7 @@ def get_used_images(script_dir):
     return used_images
 
 
-def get_all_images(images_dir, image_extensions):
+def get_all_images(images_dir):
     """
     Get all image file names in the specified directory with specified extensions.
     """
@@ -66,7 +66,7 @@ def main():
     image_extensions = {'.png', '.jpg', '.avif', '.webp', '.svg'}
 
     # Get all image names in the images directory
-    all_images = get_all_images(images_dir, image_extensions)
+    all_images = get_all_images(images_dir)
 
     # Get the set of image names used in the scripts.
     used_images = get_used_images(script_dir)
