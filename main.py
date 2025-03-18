@@ -1,5 +1,6 @@
 import os
 import re
+from pathlib import Path
 
 
 def get_used_images(script_dir):
@@ -42,24 +43,28 @@ def get_all_images(images_dir):
 
 def main():
     # Ask the user for the project game directory.
-    project_dir = input("Enter the full path of the project game directory: ").strip()
-    project_dir = os.path.abspath(project_dir)
+    project_dir = input(r"Enter the full path of the project game directory(D:\renpy\Project\game_name\game) or type 1 to define your own paths: ").strip()
+    if project_dir != '1':
+        project_dir = os.path.abspath(project_dir)
 
-    # Validate that the project directory exists.
-    if not os.path.isdir(project_dir):
-        print(f"The directory '{project_dir}' does not exist.")
-        return
+        # Validate that the project directory exists.
+        if not os.path.isdir(project_dir):
+            print(f"The directory '{project_dir}' does not exist.")
+            return
 
-    # Construct script and images directories.
-    script_dir = os.path.join(project_dir, 'script')
-    images_dir = os.path.join(project_dir, 'images')
+        # Construct script and images directories.
+        script_dir = os.path.join(project_dir, 'script')
+        images_dir = os.path.join(project_dir, 'images')
+    else:
+        images_dir = input(r"Enter the full path of the images directory: ").strip()
+        script_dir = input(r"Enter the full path of the script directory: ").strip()
 
-    # Ensure these subdirectories exist inside the project directory.
+    # Ensure these subdirectories exist
     if not os.path.isdir(script_dir):
-        print(f"The 'script' folder does not exist in '{project_dir}'.")
+        print(f"The 'script' folder does not exist in.")
         return
     if not os.path.isdir(images_dir):
-        print(f"The 'images' folder does not exist in '{project_dir}'.")
+        print(f"The 'images' folder does not exist in.")
         return
 
     # Define acceptable image file extensions.
