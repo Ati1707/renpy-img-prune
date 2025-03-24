@@ -41,7 +41,7 @@ def main():
         if not project_dir.is_dir():
             print(f"The directory '{project_dir}' does not exist.")
             return
-        script_dir = project_dir / 'script'
+        script_dir = project_dir / 'scripts'
         images_dir = project_dir / 'images'
     else:
         images_dir = Path(input("Enter the full path of the images directory: ").strip()).resolve()
