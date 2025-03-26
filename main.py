@@ -1,5 +1,6 @@
 import sys
 import tkinter as tk
+import sv_ttk
 from pathlib import Path
 from typing import Optional, Tuple
 
@@ -170,6 +171,8 @@ def run_analysis():
     root.after_idle(root.attributes, '-topmost', False)
     root.focus_force()
     # ---
+
+    sv_ttk.set_theme("dark")
 
     root.mainloop()
 

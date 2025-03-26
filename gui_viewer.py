@@ -99,7 +99,7 @@ class UnusedImageViewer:
 
     def _setup_ui(self):
         """Configures the Tkinter widgets."""
-        self.master.title("Unused Image Reviewer")
+        self.master.title("Renpy Image Prune")
         self.master.columnconfigure(0, weight=1)
         self.master.rowconfigure(0, weight=1)
         self.master.minsize(600, 450)
