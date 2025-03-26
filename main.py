@@ -23,7 +23,6 @@ def find_project_paths(base_dir: Path) -> Tuple[Optional[Path], Optional[Path]]:
         if the standard structure isn't found.
     """
     script_dir = None
-    images_dir = None
 
     game_dir = base_dir / 'game'
     if not game_dir.is_dir():
