@@ -1,11 +1,12 @@
 This script helps you identify unused images in your Ren'Py project and optionally deletes them.
 
 ## Requirements
-  Python 3.12 or higher
-  Pillow 11.1.0
-  sv-ttk 2.6.0
-  (optional)
-  pip install cairosvg if you use svg images
+  Python 3.12 or higher  
+  Pillow 11.1.0  
+  sv-ttk 2.6.0  
+  
+  (Optional)  
+  pip install cairosvg if you use svg images  
   
 ## Usage
 This script works with Ren'Py projects that have separate folders for images and scripts. Follow these steps to use the script:
