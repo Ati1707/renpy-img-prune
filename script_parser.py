@@ -6,7 +6,7 @@ import re
 from pathlib import Path
 from typing import Set
 
-from config import SHOW_SCENE_PATTERN, DEFINE_IMAGE_PATTERN, IMAGEBUTTON_PATTERN
+from config import SHOW_PATTERN, SCENE_PATTERN, DEFINE_IMAGE_PATTERN, IMAGEBUTTON_PATTERN
 
 def extract_image_references(script_dir: Path) -> Set[str]:
     """
@@ -26,7 +26,8 @@ def extract_image_references(script_dir: Path) -> Set[str]:
         return used_image_references
 
     # Compile regex patterns for efficiency
-    show_scene_re = re.compile(SHOW_SCENE_PATTERN, re.IGNORECASE | re.MULTILINE)
+    show_re = re.compile(SHOW_PATTERN, re.IGNORECASE | re.MULTILINE)
+    scene_re = re.compile(SCENE_PATTERN, re.IGNORECASE | re.MULTILINE)
     define_image_re = re.compile(DEFINE_IMAGE_PATTERN, re.IGNORECASE | re.MULTILINE)
     imagebutton_re = re.compile(IMAGEBUTTON_PATTERN, re.IGNORECASE)
 
@@ -38,7 +39,12 @@ def extract_image_references(script_dir: Path) -> Set[str]:
                 content = file.read()
 
                 # Find images used in show/scene
-                for match in show_scene_re.finditer(content):
+                for match in show_re.finditer(content):
+                    ref = match.group(1).strip()
+                    # Normalize path separators just in case
+                    used_image_references.add(ref.replace('\\', '/'))
+
+                for match in scene_re.finditer(content):
                     ref = match.group(1).strip()
                     # Normalize path separators just in case
                     used_image_references.add(ref.replace('\\', '/'))

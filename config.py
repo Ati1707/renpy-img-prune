@@ -5,7 +5,9 @@ IMAGE_EXTENSIONS = {'.png', '.jpg', '.jpeg', '.avif', '.webp', '.svg'}
 # Handles optional attributes after the image name
 # Example: show eileen happy
 # Example: scene bg room
-SHOW_SCENE_PATTERN = r'^\s*(?:show|scene)\s+([\w\/-]+)(?:\s+.*)?$' # Allow '/' for paths like gui/button
+SCENE_PATTERN = r'^\s*scene\s+([\w\/.-]+)'
+
+SHOW_PATTERN = r'^\s*show\s+([\w\/.-]+)'
 
 # Regex for finding image definitions in .rpy files
 # Example: image logo = "images/logo.png"
